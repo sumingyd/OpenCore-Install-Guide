@@ -37,7 +37,7 @@
 
 ::: tip 提示
 
-这是给你系统放SSDT的地方，这些配置对 **启动macOS** 来说非常重要。SSDT可以实现许多功能： [定制USB](https://dortania.github.io/OpenCore-Post-Install/usb/), [禁用不支持的显卡(GPU)](../extras/spoof.md) 等等. **我们的系统没了它甚至启动不了**. 关于怎么制作SSDT，请阅读: [**ACPI 入门指南**](https://dortania.github.io/Getting-Started-With-ACPI/)
+这是给你系统放SSDT的地方，这些配置对 **引导macOS** 来说非常重要。SSDT可以实现许多功能： [定制USB](https://dortania.github.io/OpenCore-Post-Install/usb/), [禁用不支持的显卡(GPU)](../extras/spoof.md) 等等. **我们的系统没了它甚至启动不了**. 关于怎么制作SSDT，请阅读: [**ACPI 入门指南**](https://dortania.github.io/Getting-Started-With-ACPI/)
 
 对我们这平台来说，我们需要几个SSDT来恢复以前Clover有的功能：
 
