@@ -23,9 +23,9 @@
 * [示例config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
   * 从这里获取: [config.plist Setup](../config.plist/README.md)
 
-::: warningtip 
+::: warning 警告
 
-在配置 OpenCore 之前，请多读几次本文档，并确保配置的准确无误。请注意，截图并不一定是最新的，因此请看它们下面的文字，如果文字没说，则保留为默认值。
+在配置 OpenCore 之前，请多读几次本文档，并确保配置的准确无误。请注意，截图并不一定是最新的，因此请看它们下面的文字，如果没有提到，请保留为默认值。
 
 :::
 
