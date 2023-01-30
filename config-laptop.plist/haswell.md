@@ -33,7 +33,7 @@
 
 ![ACPI](../images/config/config-laptop.plist/haswell/acpi.png)
 
-### 添加(Add)
+### Add
 
 ::: tip 提示
 
@@ -54,11 +54,11 @@
 
 :::
 
-### 删除(Delete)
+### Delete
 
 这的选项可以阻止某些ACPI表加载，但是我们并不需要它。
 
-### 补丁(Patch)
+### Patch
 
 ::: tip 提示
 
@@ -78,21 +78,21 @@
 
 :::
 
-### 选项(Quirks)
+### Quirks
 
 这些是与 ACPI 相关的设置，请将此处的所有内容保留为默认值，因为我们没有用到。
 
-## 引导(Booter)
+## Booter
 
 ![Booter](../images/config/config-universal/aptio-iv-booter.png)
 
 本节专门介绍与 AptioMemoryFix.efi的替代品OpenRuntime 对boot.efi进行修补时用到选项。
 
-### Mmio白名单(MmioWhitelist)
+### MmioWhitelist
 
 这里可以允许将通常被忽略的空间传递到 macOS，在与 `DevirtualiseMmio` 搭配时很有用。
 
-### 选项(Quirks)
+### Quirks
 
 ::: tip 提示
 这些是与boot.efi修补和固件修复相关的设置，请将此处的所有内容保留为默认值，因为我们没有用到。
@@ -112,11 +112,11 @@
   
 :::
 
-## 设备属性(DeviceProperties)
+## DeviceProperties
 
 ![DeviceProperties](../images/config/config-laptop.plist/haswell/DeviceProperties.png)
 
-### 添加(Add)
+### Add
 
 Sets device properties from a map.
 
@@ -174,15 +174,15 @@ Generally follow these steps when setting up your iGPU properties. Follow the co
 
 :::
 
-### 删除(Delete)
+### Delete
 
 从map中删除设备属性，我们并不需要它。
 
-## 内核(Kernel)
+## Kernel
 
 ![Kernel](../images/config/config-universal/kernel-legacy-XCPM.png)
 
-### 添加(Add)
+### Add
 
 在这里指定要加载的 kext、加载顺序以及标明每个 kext 的用途。默认情况下，我们建议保留ProperTree的操作，但是对于32位CPU，请参见以下内容：
 
@@ -239,28 +239,28 @@ Generally follow these steps when setting up your iGPU properties. Follow the co
 
 :::
 
-### 冒仿(Emulate)
+### Emulate
 
 不受支持的 CPU（如奔腾和赛扬）需要冒仿
 
 * **Cpuid1Mask**: 留空
 * **Cpuid1Data**: 留空
 
-### 强制(Force)
+### Force
 
 用于从系统分区中加载 kext，仅与缓存中不存在某些 kext 的旧操作系统相关（如10.6中的IONetworkingFamily）
 
 对于我们，跳过即可。
 
-### 阻止(Block)
+### Block
 
 阻止某些kext加载，我们不需要。
 
-### 修补(Patch)
+### Patch
 
 修补内核和 kext。
 
-### 选项(Quirks)
+### Quirks
 
 ::: tip 提示
 
@@ -317,7 +317,7 @@ UsbInjectAll在没有适当的电流调整的情况下重新实现了内置的ma
 
 :::
 
-### 方案(Scheme)
+### Scheme
 
 与传统(legacy)引导（OS X 10.4-10.6）相关的设置，对于大多数人可以跳过，但如果你想引导旧系统，设置可以在下面找到：
 
@@ -399,7 +399,7 @@ UsbInjectAll在没有适当的电流调整的情况下重新实现了内置的ma
 
 :::
 
-### 安全(Security)
+### Security
 
 ::: tip 提示
 
@@ -442,11 +442,11 @@ UsbInjectAll在没有适当的电流调整的情况下重新实现了内置的ma
 
 :::
 
-### 串行(Serial)
+### Serial
 
 串口调试选项 (保留默认值)
 
-### 工具(Tools)
+### Tools
 
 用于运行 OC 调试工具（如 shell），ProperTree 的snapshot功能将为您添加这些工具
 
@@ -459,7 +459,7 @@ UsbInjectAll在没有适当的电流调整的情况下重新实现了内置的ma
 
 ![NVRAM](../images/config/config-universal/nvram.png)
 
-### 添加(Add)
+### Add
 
 ::: tip 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14
 
@@ -493,7 +493,7 @@ OpenCore的NVRAM GUID，主要与RTCMemoryFixup有关。
 
 ::: tip 7C436110-AB2A-4BBB-A880-FE41995C9F82
 
-系统完整性保护代码(bitmask)
+bitmask
 
 * **General Purpose boot-args**:
 
@@ -531,7 +531,7 @@ OpenCore的NVRAM GUID，主要与RTCMemoryFixup有关。
 
 :::
 
-### 删除(Delete)
+### Delete
 
 强制重新写入NVRAM的值，注意，`Add` **不会覆盖** 已存在的值，所以像 `boot-args` 这样的值应单独保留
 
@@ -604,7 +604,7 @@ SmUUID:       7B227BEC-660D-405F-8E60-411B3E4EF055
 
 :::
 
-### 通用(Generic)
+### Generic
 
 ::: details 详细信息
 
@@ -685,18 +685,18 @@ macOS Sierra 和更旧版本使用 HFS 而非 APFS。如果引导旧版本的 ma
 
 :::
 
-### 声音(Audio)
+### Audio
 
 与 AudioDxe 设置相关，忽略即可（保留为默认值）。这与 macOS 中的音频(声卡)支持无关。
 
 * 有关 AudioDxe音频 的使用，请参阅安装后页面: [添加GUI和启动音效](https://dortania.github.io/OpenCore-Post-Install/)
 
-### 输入(Input)
+### Input
 
 与用于FileVault和Hotkey支持的boot.efi键盘快捷键相关，将此处的所有内容保留为默认值，我们用不到这些选项。有关更多详细信息，请参阅此处: [安全性和FileVault](https://dortania.github.io/OpenCore-Post-Install/)
 
 
-### 输出(Output)
+### Output
 
 关于OpenCore的显示输出，请将所有内容保留为默认值，我们用不到这些选项。
 
