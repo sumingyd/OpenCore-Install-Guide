@@ -20,7 +20,7 @@
   * plist通用编辑器
 * [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
   * 用来生成SMBIOS数据
-* [Sample/config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
+* [示例config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
   * 从这里获取: [config.plist Setup](../config.plist/README.md)
 
 ::: warningtip 
