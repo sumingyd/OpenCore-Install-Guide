@@ -146,7 +146,7 @@
 
 ::: details 文件夹结构示例
 
-![Directory Structure from OpenCore's DOC](../../images/troubleshooting/troubleshooting-md/oc-structure.png)
+![Directory Structure from OpenCore's Documentation](../../images/troubleshooting/troubleshooting-md/oc-structure.png)
 
 :::
 
@@ -163,3 +163,14 @@
 ## 收到 “OC: Failed to find SB model disable halting on critical error”
 
 这是一个拼写错误，请确保在你的 config.plist 中将`Misc -> Security -> SecureBootModel` 设置为 **disabled**
+
+## Legacy 启动卡在 `BOOT FAIL!`
+
+此错误意味着在任何分区上都找不到EFI/OC/OpenCore.EFI。
+再次检查EFI文件夹结构是否正确。
+
+::: details 文件夹结构示例
+
+![Directory Structure from OpenCore's Documentation](../../images/troubleshooting/troubleshooting-md/oc-structure.png)
+
+:::

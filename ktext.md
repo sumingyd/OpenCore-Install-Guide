@@ -380,13 +380,18 @@ BlueToolFixup可以在Lilu之后的任何地方使用。
   * 一个实验性的Lilu插件，用于优化Alder Lake的异构核心配置。 **只适用于Alder Lake cpu**
 * [RestrictEvents](https://github.com/acidanthera/RestrictEvents)
   * 为macOS的各种功能打补丁，请参阅[这个说明](https://github.com/acidanthera/RestrictEvents#boot-arguments) 了解更多信息
+* [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC)
+  * macOS内核扩展的eMMC支持。目前仅支持eMMC/MMC卡，最高速度为HS200。此驱动程序目前正在进行中，在某些设备上可能会出现性能不佳或无法使用的情况。目前不支持SD卡。
 
 ::: details 传统SATA kext
 
+* [AppleIntelPIIXATA.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/d20d9975c144728da7ae2543d65422f53dabaa2d/payloads/Kexts/Misc/AppleIntelPIIXATA-v1.0.0.zip)
+  * Legacy IDE and ATA kext for older Core 2 Duo/Quad and Pentium 4 systems. Needed for macOS 11 (Big Sur) and newer as this kext was dropped in macOS 10.15 (Catalina)
 * [AHCIPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/AHCIPortInjector.kext.zip)
   * 传统的SATA/AHCI注入器，主要适用于Penryn时代的老旧机器
 * [ATAPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/ATAPortInjector.kext.zip)
-  * 传统的ATA注入器，主要与IDE和ATA设备相关(例如:当BIOS中没有AHCI选项时)
+  * 传统ATA注入器，主要用于IDE和ATA设备(如:当BIOS中没有AHCI选项时)
+  * 依赖于AppleIntelPIIXATA.kext，在使用macOS 11 (Big Sur)和更新版本时需要包含它
   
 :::
 
