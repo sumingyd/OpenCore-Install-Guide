@@ -62,11 +62,12 @@ panic(cpu 6 caller 0xffffff801fc057ba): a freed zone element has been modified i
 
 我们需要重置内存映射的原因是我们希望它更确定，我的意思是每次启动都会有更少的变化，所以我们有更少的边缘情况(内存映射在启动上并不总是一致的)。准备好:
 
-* 更新BIOS(非常重要，因为早期的BIOS已知有内存映射问题，特别是Z390)
+* 更新BIOS(非常重要的是早期的BIOS有内存映射问题，特别是Z390)
 * 清除CMOS
 * 启用需要的BIOS设置:
-  * `Above4GDecoding`: 这允许设备使用4GB以上的内存区域，这意味着macOS将有更多的空间来容纳，在一些X99, X299上可能会有问题，因此建议使用或不使用测试。
-    * 注意:在BIOS支持可调整大小的BAR支持，启用Above4G将解锁此选项。如果启用，请确保 Booter -> Quirks -> ResizeAppleGpuBars 设置为 `0`
+  * `启用4G以上解码`:这允许设备使用4GB以上的内存区域，这意味着macOS将有更多的空间来容纳，但在一些X99/X299 boasrd上可能会出现问题。
+    * 如果遇到问题，请将“MMIOH Base”设置为12 TB或更低，因为macOS只支持44位的物理寻址。
+    * 注意:在BIOS支持可调整大小的BAR支持，启用4G以上将解锁此选项。如果启用了此功能，请确保boot -> Quirks -> ResizeAppleGpuBars设置为`0`。
   * `Boot Options -> Windows8.1/10 mode`: 这将确保没有加载旧的遗留垃圾。有趣的事实是，`其他操作系统`只用于引导旧版本的Windows，而不是其他操作系统。
 * 在BIOS中禁用尽可能多的不需要的设备(这意味着每次引导时map的变化更小，因此引导失败的机会更少)。常见的设置:
   * `CSM`: 对于遗留支持，添加了一堆我们不想要的垃圾。这也会破坏shell，让你无法启动它。
