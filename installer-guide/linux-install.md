@@ -56,9 +56,15 @@ python3 ./macrecovery.py -b Mac-42FD25EABCABB274 -m 00000000000000000 download
 # Monterey (12)
 python3 ./macrecovery.py -b Mac-FFE5EF870D7BA81A -m 00000000000000000 download
 
-# Latest version
-# ie. Ventura (13)
+# Ventura (13)
 python3 ./macrecovery.py -b Mac-4B682C642B45593E -m 00000000000000000 download
+
+# Sonoma (14)
+python3 ./macrecovery.py -b Mac-226CB3C6A851A671 -m 00000000000000000 download
+
+# Latest version
+# ie. Sequoia (15)
+python3 ./macrecovery.py -b Mac-937A206F2EE63C01 -m 00000000000000000 download
 ```
 
 现在，在终端中运行其中一个命令，完成后你将得到类似于下面的输出:

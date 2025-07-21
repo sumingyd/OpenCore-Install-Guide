@@ -89,6 +89,7 @@
 | AvoidRuntimeDefrag | No | Big Sur 可能需要启用这个选项 |
 | EnableSafeModeSlide | No | |
 | EnableWriteUnprotector | No | |
+| FixupAppleEfiImages | Yes | 这是引导OS X 10.4到10.12所必需的 |
 | ProvideCustomSlide | No | |
 | RebuildAppleMemoryMap | Yes | 在引导OS X 10.4到10.6时，这是必需的 |
 | SetupVirtualMap | No | |
@@ -109,6 +110,9 @@
   * 允许slide变量在安全模式下使用。
 * **EnableWriteUnprotector**: NO
   * 需要从CR0寄存器中移除写保护。
+* **FixupAppleEfiImages**: YES
+  * 修复了macOS中 boot.efi 的错误。efi，用于使用DuetPkg的机器
+  * 启用SecureBootModel启动macOS 10.13+时不需要
 * **ProvideCustomSlide**: YES
   * 用于Slide变量计算。然而，这种怪异的必要性取决于 `OCABC: Only N/256 slide values are usable!` 调试日志中的消息。如果显示 `OCABC: All slides are usable! You can disable ProvideCustomSlide!` 在你的日志中，你可以禁用`ProvideCustomSlide`.
 * **RebuildAppleMemoryMap**: YES
@@ -190,6 +194,8 @@
 | 11 | 20.0.0 | 20.99.99 |
 | 12 | 21.0.0 | 21.99.99 |
 | 13 | 22.0.0 | 22.99.99 |
+| 14 | 23.0.0 | 23.99.99 |
+| 15 | 24.0.0 | 24.99.99 |
 
 :::
 
@@ -218,7 +224,7 @@
 
 ::: tip 信息
 
-与内核相关的设置，我们将启用以下功能:
+与内核相关的设置，对我们来说，我们将更改以下内容：
 
 | 选项 | 启用 | 说明 |
 | :--- | :--- | :--- |

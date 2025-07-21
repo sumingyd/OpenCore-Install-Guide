@@ -436,10 +436,10 @@ sudo cp -a /usr/standalone/i386/. /System/Volumes/Preboot/CD844C38-1A25-48D5-938
 * 有时，如果USB插入3.x端口，将其插入2.0端口可以修复此错误，反之亦然。
 
 * 对于AMD的15h和16h cpu，您可能需要添加以下内容:
-  * [XLNCUSBFix.kext](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
+  * [XLNCUSBFix.kext](https://github.com/sumingyd/OpenCore-Install-Guide/blob/master/extra-files/XLNCUSBFix.kext.zip)
 
 * 如果XLNCUSBFix仍然不起作用，那么在XLNCUSBFix旁边尝试以下操作:
-  * [AMD StopSign-fixv5](https://cdn.discordapp.com/attachments/249992304503291905/355235241645965312/StopSign-fixv5.zip)
+  * [AMD StopSign-fixv5](https://github.com/sumingyd/OpenCore-Install-Guide/blob/master/extra-files/StopSign-fixv5.zip)
 
 * X299用户:启用""Above  4G解码""
   * X299上的奇怪固件bug，否则USB会损坏

@@ -58,8 +58,11 @@ py macrecovery.py -b Mac-FFE5EF870D7BA81A -m 00000000000000000 download
 # Ventura (13)
 py macrecovery.py -b Mac-4B682C642B45593E -m 00000000000000000 download
 
+# Sonoma (14)
+py macrecovery.py -b Mac-226CB3C6A851A671 -m 00000000000000000 download
+
 # Latest version
-# ie. Sonoma (14)
+# ie. Sequoia (15)
 py macrecovery.py -b Mac-937A206F2EE63C01 -m 00000000000000000 download
 ```
 
@@ -75,11 +78,11 @@ py macrecovery.py -b Mac-937A206F2EE63C01 -m 00000000000000000 download
 | :--- | :--- |
 |![](../images/installer-guide/windows-install-md/basesystem-example.png) | ![](../images/installer-guide/windows-install-md/macrecovery-after.jpg) |
 
-现在安装程序已经下载完毕，接下来我们要格式化USB。
+现在下载了安装程序，接下来我们要格式化USB。
 
 ## 制作安装程序
 
-在这里，我们将格式化我们的 USB 并将 macOS 添加到其中，我们有两个选择:
+在这里，我们将格式化我们的USB并将macOS添加到其中，我们有3个选项：
 
 * [磁盘管理方法](#disk-management-method)
   * 基于GUI，最简单的方式
@@ -148,23 +151,23 @@ py macrecovery.py -b Mac-937A206F2EE63C01 -m 00000000000000000 download
 现在运行以下命令:
 
 ```sh
-# List available disks
+# 列出可用磁盘
 list disk
-# Select your disk(ie. disk 1)
+# 选择你的磁盘(例如. disk 1)
 select disk 1
-# Format the drive
+# 格式化驱动器
 clean
-# Convert to GPT
-# Due to an odd bug with BOOTICE and DuetPkg, MBR disks will fail to boot
+# 转换为GPT
+# 由于BOOTICE和DuetPkg的一个奇怪的错误，MBR磁盘将无法引导
 convert gpt
-# Create a new partition
+# 创建一个新分区
 create partition primary
-# Select your partition
-# Running clean ensures we only have 1 partition so it will be "partition 1"
+# 选择你的分区
+# R运行clean确保我们只有一个分区，所以它将是 "partition 1"
 select partition 1
-# Format the drive as FAT32
+# 将驱动器格式化为FAT32
 format fs=fat32 quick
-# Assign a drive letter(ie. Drive E, ensure it's not currently in use)
+# 分配一个驱动器号(例如：驱动器E，确保它目前不在使用中)
 ASSIGN LETTER=E
 ```
 

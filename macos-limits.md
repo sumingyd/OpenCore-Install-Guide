@@ -115,9 +115,8 @@ SSE要求:
 不幸的是，AMD完全不支持macOS中的许多功能，还有许多功能是部分损坏的。这些包括:
 
 * 依赖AppleHV的虚拟机
-  * 这包括VMWare、Parallels、Docker、Android Studio等
-  * VirtualBox是唯一的例外，因为它们有自己的虚拟机管理程序
-  * VMware 10和Parallels 13.1.0确实支持自己的虚拟机管理程序，但是使用这种过时的虚拟机软件会带来很大的安全威胁
+  * 这包括VirtualBox、VMWare、Parallels、Docker、Android Studio等
+  * VirtualBox 6、VMware 10和Parallels 13.1.0确实支持它们自己的虚拟机管理程序，但是使用这些过时的虚拟机软件会带来很大的安全威胁
 * Adobe支持
   * 大多数Adobe套件依赖于英特尔的Memfast指令集，在使用AMD cpu时会导致崩溃
   * 你可以禁用功能，如RAW支持，以避免崩溃:[Adobe 修复](https://gist.github.com/naveenkrdy/26760ac5135deed6d0bb8902f6ceb6bd)
@@ -249,12 +248,12 @@ SSE要求:
 
 在macOS中，几乎所有有线网络适配器都有某种形式的支持，要么是内置驱动程序，要么是社区制作的kext。主要的例外:
 
-* Intel I225 2.5Gb NIC
-  * 在高端桌面彗星湖板上发现
-  * 有可能的解决方法: [来源](https://www.hackintosh-forum.de/forum/thread/48568-i9-10900k-gigabyte-z490-vision-d-er-läuft/?postID=606059#post606059) 和 [示例](config.plist/comet-lake.md#deviceproperties)
+* Intel I225-V 2.5Gb NIC
+  * 再高端 Desktop Comet Lake 板上发现
+  * 需要设备属性: [来源](https://www.hackintosh-forum.de/forum/thread/48568-i9-10900k-gigabyte-z490-vision-d-er-läuft/?postID=606059#post606059) and [示例](config.plist/comet-lake.md#deviceproperties)
 * Intel I350 1Gb server NIC
-  * 通常在Intel和Supermicro不同年代的服务器板上找到
-  * [方法](config-HEDT/ivy-bridge-e.md#deviceproperties)
+  * 通常在Intel和Supermicro服务器的各种版本的板上找到
+  * [需要设备属性](config-HEDT/ivy-bridge-e.md#deviceproperties)
 * Intel 10Gb server NICs
   * 解决方案是 [X520 and X540 chipsets](https://www.tonymacx86.com/threads/how-to-build-your-own-imac-pro-successful-build-extended-guide.229353/)
 * Mellanox和Qlogic server网卡

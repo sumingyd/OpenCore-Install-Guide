@@ -30,7 +30,7 @@
 开一个终端窗口，然后复制并粘贴下面的命令:
 
 ```sh
-softwareupdate --list-full-installers;echo;echo "Please enter version number you wish to download:";read;$(if [ -n "$REPLY" ]; then; echo "softwareupdate --fetch-full-installer --full-installer-version "$REPLY; fi);
+softwareupdate --list-full-installers; echo; echo "Please enter version number you wish to download:"; read REPLY; [ -n "$REPLY" ] && softwareupdate --fetch-full-installer --full-installer-version "$REPLY"
 ```
 
 ![](../images/installer-guide/mac-install-md/commandlinesoftwareupdateutility.png)

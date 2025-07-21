@@ -100,12 +100,11 @@ kext是**k**ernel**ext**ension,你可以把它想象成macOS的驱动程序，�
 * [SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)
   * 用于监控AMD zen系统的CPU温度
   * **正在积极开发中，可能不稳定**
-  * 需要 AMDRyzenCPUPowerManagement (参见 [AMD CPU 专用的 Kexts](ktext.md#amd-cpu-specific-kexts))
-  * 需要macOS 10.13或更新版本
-* [SMCRadeonGPU](https://github.com/aluveitie/RadeonSensor)
+  * 需要 AMDRyzenCPUPowerManagement (查看 [AMD CPU 专用 Kexts](ktext.md#amd-cpu-specific-kexts))
+  * 需要 macOS 10.13 或更新版本
+* [SMCRadeonSensors](https://github.com/ChefKissInc/SMCRadeonSensors)
   * 用于监控AMD GPU系统上的GPU温度
-  * 需要来自相同存储库的RadeonSensor
-  * 需要macOS 11或更新版本
+  * 需要 macOS 10.14 或更新版本
 * SMCSuperIO.kext
   * 用于监控风扇转速
   * 不适用于基于AMD CPU的系统
@@ -178,10 +177,12 @@ kext是**k**ernel**ext**ension,你可以把它想象成macOS的驱动程序，�
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
   * 用于Realtek的2.5Gb以太网
   * 需要macOS 10.15或更新的版本
-* 对于英特尔的I225-V网卡，补丁在桌面 [Comet Lake DeviceProperties](config.plist/comet-lake.md#deviceproperties) 部分中提到，不需要kext。
-  * 需要macOS 10.15或更新的版本
-* 对于英特尔的I350网卡，补丁在HEDT [Sandy and Ivy Bridge-E DeviceProperties](config-HEDT/ivy-bridge-e.md#deviceproperties) 部分中提到，不需要kext。
-  * 需要OS X 10.10或更新的版本
+* 对于英特尔的I225-V网卡，补丁在桌面 [Comet Lake DeviceProperties](config.plist/comet-lake.md#deviceproperties) 提到.
+  * 对于macOS 13及以上版本，支持I225-V网卡的next被删除，取而代之的是DriverKit DEXT。这个DEXT需要工作的VT-d，所以我们建议重用旧的kext[AppleIntelI210Ethernet](extra-files/AppleIntelI210Ethernet.kext.zip)
+    * Monterey 和 更老的版本无须担心
+  * 需要 macOS 10.15 或更新版本
+* 对于Intel的I350网卡，补丁在HEDT [Sandy and Ivy Bridge-E DeviceProperties](config-HEDT/ivy-bridge-e.md#deviceproperties) 部分中提到。不需要kext。
+  * 需要 OS X 10.10 或更新版本
 
 ::: details 传统网络适配器的Kexts
 
@@ -345,9 +346,9 @@ BlueToolFixup可以在Lilu之后的任何地方使用。
 
 ### AMD CPU 专用 kexts
 
-* [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
-  * AMD FX系统的USB修复，不建议Ryzen使用
-  * 需要macOS 10.13或更新的版本
+* [XLNCUSBFIX](https://github.com/sumingyd/OpenCore-Install-Guide/blob/master/extra-files/XLNCUSBFix.kext.zip)
+  * 针对AMD FX系统的USB修复，不推荐用于Ryzen
+  * 需要 macOS 10.13 或更新版本
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
   * 用于FX系统和前面板Mic+ Ryzen系统的音频支持，不要与AppleALC混合。音频质量明显比Zen cpu上的AppleALC差
   * 需要OS X 10.6或更新的版本
