@@ -71,7 +71,7 @@
 
 ### MmioWhitelist
 
-This section is allowing devices to be passthrough to macOS that are generally ignored, for us we can ignore this section.
+这一节允许将通常被忽略的设备直通到macOS，对于我们来说，我们可以忽略这一节。
 
 ### Quirks
 
@@ -184,6 +184,8 @@ TL;DR，删除这里所有的PciRoot，因为我们不会使用这一节。
 | 11 | 20.0.0 | 20.99.99 |
 | 12 | 21.0.0 | 21.99.99 |
 | 13 | 22.0.0 | 22.99.99 |
+| 14 | 23.0.0 | 23.99.99 |
+| 15 | 24.0.0 | 24.99.99 |
 
 :::
 
@@ -209,7 +211,7 @@ TL;DR，删除这里所有的PciRoot，因为我们不会使用这一节。
 
 ::: tip 信息
 
-与内核相关的设置，我们将启用以下功能:
+与内核相关的设置，对我们来说，我们将更改以下内容：
 
 | 选项 | 启用 | 说明 |
 | :--- | :--- | :--- |
@@ -236,7 +238,11 @@ TL;DR，删除这里所有的PciRoot，因为我们不会使用这一节。
   * 为UpdateSMBIOSMode设置为`Custom`时执行GUID补丁。通常与戴尔笔记本电脑有关
   * 通过UpdateSMBIOSMode自定义模式启用此选项也可以禁用SMBIOS注入到“非苹果”操作系统中，但我们不支持这种方法，因为它破坏了Bootcamp兼容性。使用风险自负
 * **DisableIoMapper**: YES
-  * 如果在BIOS中无法禁用或其他操作系统需要启用VT-D，则需要绕过VT-D，这是`dart=0`的更好替代方案，因为SIP可以在Catalina中继续运行
+  * 如果无法在BIOS中禁用或需要在其他操作系统中禁用，则需要绕过VT-D，这是 `dart=0` 的更好选择，因为SIP可以在Catalina中保留
+* **DisableIoMapperMapping**: NO
+  * 如果您在使用Wi-Fi/以太网/Thunderbolt时遇到问题，启用了VT-D并且安装了超过16GB的内存，则需要使用。这个怪癖需要一个[打过补丁的DMAR表](https://sumingyd.github.io/Getting-Started-With-ACPI/Universal/dmar.html)，删除了保留内存区域
+  * 我们建议禁用VT-D，所以我们不需要启用它
+  * 13.2.1及以下版本不需要
 * **DisableLinkeditJettison**: YES
   * 允许Lilu和其他kext在不需要`keepsyms=1`的情况下拥有更可靠的性能
 * **DisableRtcChecksum**: NO

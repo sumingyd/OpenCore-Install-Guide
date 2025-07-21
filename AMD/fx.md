@@ -170,6 +170,8 @@ TL;DR，删除这里所有的PciRoot，因为我们不会使用这一节。
 | 11 | 20.0.0 | 20.99.99 |
 | 12 | 21.0.0 | 21.99.99 |
 | 13 | 22.0.0 | 22.99.99 |
+| 14 | 23.0.0 | 23.99.99 |
+| 15 | 24.0.0 | 24.99.99 |
 
 :::
 
@@ -283,7 +285,7 @@ Kernel patches:
 
 ::: tip 信息
 
-与内核相关的设置，我们将启用以下功能:
+与内核相关的设置，对我们来说，我们将更改以下内容：
 
 | 选项 | 启用 | 说明 |
 | :--- | :--- | :--- |
@@ -306,7 +308,9 @@ Kernel patches:
   * 为UpdateSMBIOSMode设置为`Custom`时执行GUID补丁。通常与戴尔笔记本电脑有关
   * 与`PlatformInfo -> UpdateSMBIOSMode -> Custom`一起启用此功能将禁用SMBIOS注入“非苹果”操作系统，但我们不支持此方法，因为它破坏了Bootcamp兼容性。使用风险自负。
 * **DisableIoMapper**: NO
-  * AMD不支持DMAR或VT-D
+  * AMD没有DMAR或VT-D支持，所以这无关紧要
+* **DisableIoMapperMapping**: NO
+  * AMD没有DMAR或VT-D支持，所以这无关紧要
 * **DisableLinkeditJettison**: YES
   * 允许Lilu和其他kext在不需要`keepsyms=1`的情况下拥有更可靠的性能
 * **DisableRtcChecksum**: NO

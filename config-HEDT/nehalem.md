@@ -87,6 +87,7 @@
 | AvoidRuntimeDefrag | No | Big Sur 可能需要启用这个选项 |
 | EnableSafeModeSlide | No | |
 | EnableWriteUnprotector | No | |
+| FixupAppleEfiImages | Yes | 这是引导OS X 10.4到10.12所必需的 |
 | ProvideCustomSlide | No | |
 | RebuildAppleMemoryMap | Yes | 在引导OS X 10.4到10.6时，这是必需的 |
 | SetupVirtualMap | No | |
@@ -101,12 +102,15 @@
 ::: details 更深入的信息
 
 * **AvoidRuntimeDefrag**: NO
-  * Fixes UEFI runtime services like date, time, NVRAM, power control on UEFI Boards
+  * 修复了UEFI运行时服务，如日期，时间，NVRAM，电源控制
   * 但macOS Big Sur要求提供APIC表，否则会导致内核出现早期错误，因此建议这些用户使用这个选项。
 * **EnableSafeModeSlide**: YES
   * 允许slide变量在安全模式下使用。
 * **EnableWriteUnprotector**: YES
   * 需要删除UEFI平台上CR0寄存器的写保护
+* **FixupAppleEfiImages**: YES
+  * 修复了macOS的 boot.efi 错误，使用DuetPkg的机器需要
+  * 启用SecureBootModel启动macOS 10.13+时不需要
 * **ProvideCustomSlide**: YES
   * 用于Slide变量计算。然而，这个选项的必要性取决于 `OCABC: Only N/256 slide values are usable!` 调试日志中的消息。如果显示 `OCABC: All slides are usable! You can disable ProvideCustomSlide!` 在你的日志中，你可以禁用`ProvideCustomSlide`.
 * **RebuildAppleMemoryMap**: YES
@@ -190,6 +194,8 @@ TL;DR，删除这里所有的PciRoot，因为我们不会使用这一节。
 | 11 | 20.0.0 | 20.99.99 |
 | 12 | 21.0.0 | 21.99.99 |
 | 13 | 22.0.0 | 22.99.99 |
+| 14 | 23.0.0 | 23.99.99 |
+| 15 | 24.0.0 | 24.99.99 |
 
 :::
 
@@ -215,7 +221,7 @@ TL;DR，删除这里所有的PciRoot，因为我们不会使用这一节。
 
 ::: tip 信息
 
-与内核相关的设置，我们将启用以下功能:
+与内核相关的设置，对我们来说，我们将更改以下内容：
 
 | 选项 | 启用 | 说明 |
 | :--- | :--- | :--- |
@@ -245,6 +251,10 @@ TL;DR，删除这里所有的PciRoot，因为我们不会使用这一节。
   * 通过UpdateSMBIOSMode自定义模式启用此选项也可以禁用SMBIOS注入到“非苹果”操作系统中，但我们不支持这种方法，因为它破坏了Bootcamp兼容性。使用风险自负
 * **DisableIoMapper**: YES
   * 如果在BIOS中无法禁用或其他操作系统需要启用VT-D，则需要绕过VT-D，这是`dart=0`的更好替代方案，因为SIP可以在Catalina中继续运行
+* **DisableIoMapperMapping**: NO
+  * 如果您在使用Wi-Fi/以太网/Thunderbolt时遇到问题，启用了VT-D并且安装了超过16GB的内存，则需要使用。这个怪癖需要一个[打过补丁的DMAR表](https://dortania.github.io/Getting-Started-With-ACPI/Universal/dmar.html)，删除了保留内存区域
+  * 我们建议禁用VT-D，所以我们不需要启用它
+  * 13.2.1及以下版本不需要
 * **DisableLinkeditJettison**: YES
   * 允许Lilu和其他kext在不需要`keepsyms=1`的情况下拥有更可靠的性能
 * **DisableRtcChecksum**: NO
@@ -519,8 +529,8 @@ For this Nehalem example, we have a few SMBIOS to choose from:
 
 | SMBIOS | Hardware |
 | :--- | :--- |
-| MacPro5,1 | Mojave and older |
-| MacPro6,1 | Catalina and newer |
+| MacPro5,1 | Mojave和更老的 |
+| MacPro6,1 | Catalina和更新的 |
 
 运行GenSMBIOS，选择选项1下载MacSerial，选择选项3下载SMBIOS。这将给我们一个类似于下面的输出:
 
