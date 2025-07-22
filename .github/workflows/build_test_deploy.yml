@@ -33,7 +33,7 @@ jobs:
         with:
           path: .vuepress/dist/
   deploy:
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' || github.event_name == 'workflow_dispatch' }}
     concurrency: 
       group: "pages"
       cancel-in-progress: false
