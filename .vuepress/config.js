@@ -25,7 +25,7 @@ module.exports = {
         '/': {
             lang: 'zh-CN',
             title: 'OpenCore安装指南',
-            description: '中文版OpenCore安装指南 - Ver.0.9.1'
+            description: '中文版OpenCore安装指南 - Ver.1.0.2'
         },
         '/zh/': {
             lang: 'en-US',
