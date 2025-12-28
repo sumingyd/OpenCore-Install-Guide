@@ -457,11 +457,11 @@ BlueToolFixup可以在Lilu之后的任何地方使用。
 
 ## SSDTs
 
-你在AcpiSamples文件夹中看到所有的ssdt，想知道你是否需要它们。对于我们来说，我们将介绍**您在配置的特定ACPI部分中需要的ssdt.plist**，因为您需要的ssd是特定于平台的。有些甚至是特定于系统的，需要配置它们，如果我现在给您一个可供选择的ssd列表，您很容易就会迷失方向。
+你在AcpiSamples文件夹中看到所有的SSDT，想知道你是否需要它们。对于我们来说，我们将介绍**您的配置特定的config.plist中ACPI部分里需要哪些SSDT**，因为您需要的SSDT是特定于平台的。有些甚至是特定于系统的，需要配置它们。如果我现在给您一个可供选择的SSDT列表，您很容易就会迷失方向。
 
-[ACPI入门](https://sumingyd.github.io/Getting-Started-With-ACPI/) 有一个关于ssdt的扩展部分，包括在不同的平台上编译它们。
+[ACPI入门](https://sumingyd.github.io/Getting-Started-With-ACPI/) 有一个关于SSDT的扩展部分，包括在不同的平台上编译它们。
 
-A quick TL;DR of needed SSDTs(这是源代码，你必须将它们编译到.aml文件中):
+所需SSDT的一个快速预览（这是源代码，你必须将它们编译到.aml文件中）:
 
 ### 台式电脑
 
